@@ -93,7 +93,7 @@ flowchart TB
 
 ## What to implement
 
-Create `notebooks/01_fundamentals.ipynb`:
+Create `notebooks/week-1/day-01-llm-fundamentals/01_fundamentals.ipynb`:
 
 - [ ] Count tokens in a paragraph from one of your papers with `tiktoken.get_encoding("cl100k_base")`
 - [ ] Call Ollama from Python:

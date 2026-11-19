@@ -63,7 +63,7 @@ tests/                pytest tests
 db/init.sql           database setup (runs when the database is first created)
 docker-compose.yml    Postgres + pgvector
 evals/                golden dataset and eval results (data, not code)
-notebooks/            experiments and learning notebooks
+notebooks/            experiments and learning notebooks, one folder per week and day
 data/papers/          PDFs (git-ignored)
 course/               the 14-day study guides
 ```

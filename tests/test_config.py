@@ -10,3 +10,10 @@ def test_defaults_are_sane():
 def test_env_overrides(monkeypatch):
     monkeypatch.setenv("CHUNK_SIZE", "256")
     assert Settings(_env_file=None).chunk_size == 256
+
+
+def test_paths_point_at_the_project():
+    from research_rag.paths import PAPERS_DIR, PROJECT_ROOT
+
+    assert (PROJECT_ROOT / "pyproject.toml").exists()
+    assert PAPERS_DIR == PROJECT_ROOT / "data" / "papers"

@@ -1,6 +1,6 @@
 # Day 1 recap: what you learned, in plain words
 
-Everything here comes from **your own notebook** (`notebooks/01_fundamentals.ipynb`): your outputs, your numbers, your hallucinations.
+Everything here comes from **your own notebook** (`notebooks/week-1/day-01-llm-fundamentals/01_fundamentals.ipynb`): your outputs, your numbers, your hallucinations.
 
 ## The big picture
 
