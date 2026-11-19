@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Env and secrets
+.env
+
+# Data (keep the folder, not the PDFs)
+data/papers/*
+!data/papers/.gitkeep
+
+# Eval run outputs
+evals/results/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
