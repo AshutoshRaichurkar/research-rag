@@ -2,6 +2,8 @@
 
 **Goal:** understand just enough about LLMs and embeddings to make good RAG decisions, and be able to explain why RAG exists.
 
+> **Finished Day 1?** Read the [Day 1 recap](RECAP.md): every concept explained in plain words, with diagrams built from your own results.
+
 ## What you'll study
 
 - **Tokens** and **context windows**
