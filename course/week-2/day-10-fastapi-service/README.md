@@ -1,6 +1,6 @@
 # Day 10: FastAPI service
 
-**Goal:** turn the Python functions into a web service anyone could call, with streaming answers, and run it all with one `docker compose up`.
+**Goal:** turn the Python functions into a web service anyone could call, with streaming answers, and run it all with one `make up`.
 
 ## What you'll study
 
@@ -80,14 +80,14 @@ flowchart LR
 
 ## What to implement
 
-- [ ] `research_rag/api/schemas.py`: `AskRequest` (question, top_k, filters) and `AskResponse` (answer, citations, latency_ms, prompt_version)
-- [ ] `research_rag/api/main.py`:
+- [ ] `src/research_rag/api/schemas.py`: `AskRequest` (question, top_k, filters) and `AskResponse` (answer, citations, latency_ms, prompt_version)
+- [ ] `src/research_rag/api/main.py`:
   - `GET /health`: checks the database **and** Ollama, returns 503 if either is down
   - `POST /ask`: the full answer as JSON
   - `POST /ask/stream`: SSE events `sources` → `token`… → `done`
   - `POST /ingest`: re-run ingestion for `data/papers/` (it's idempotent, so safe to repeat)
   - load the models in `lifespan`
-- [ ] `Dockerfile`: `python:3.12-slim`, install the package, run `uvicorn research_rag.api.main:app --host 0.0.0.0 --port 8000`
+- [ ] `Dockerfile`: `python:3.12-slim`, copy `pyproject.toml` and `src/`, install the package, run `uvicorn research_rag.api.main:app --host 0.0.0.0 --port 8000`
 - [ ] Add an `api` service to `docker-compose.yml` with `OLLAMA_BASE_URL=http://host.docker.internal:11434` and `depends_on: db: condition: service_healthy`
 - [ ] `tests/test_api.py`: health, input validation (empty question → 422), and `/ask` with retrieval and the LLM mocked
 - [ ] Try it:
@@ -98,4 +98,4 @@ flowchart LR
 
 ## Done when
 
-`docker compose up` starts the database and API, `/docs` shows every endpoint, and streaming works with `curl -N`.
+`make up` starts the database and API, `/docs` shows every endpoint, and streaming works with `curl -N`.

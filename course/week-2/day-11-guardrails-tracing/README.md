@@ -70,7 +70,7 @@ Sign up at langfuse.com, create a project, and put the keys in `.env` (`LANGFUSE
 
 ## What to implement
 
-- [ ] `research_rag/generation/guardrails.py`:
+- [ ] `src/research_rag/generation/guardrails.py`:
   - `check_input(question)`: max length, non-empty, injection-pattern list → allowed or rejected with a reason
   - `is_answerable(chunks, threshold)`: top score vs. `MIN_RELEVANCE` from settings
   - `flag_suspicious(chunks)`: mark chunks with instruction-like text

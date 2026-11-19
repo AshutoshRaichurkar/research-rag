@@ -66,14 +66,14 @@ flowchart LR
 
 ## What to implement
 
-- [ ] `research_rag/ingestion/models.py`: a `Chunk` Pydantic model with `id`, `text`, `source`, `page`, `chunk_index`, `token_count`
-- [ ] `research_rag/ingestion/loader.py`: `load_pdf(path) -> list[Page]`, where each page has its number and text
-- [ ] `research_rag/ingestion/cleaner.py`:
+- [ ] `src/research_rag/ingestion/models.py`: a `Chunk` Pydantic model with `id`, `text`, `source`, `page`, `chunk_index`, `token_count`
+- [ ] `src/research_rag/ingestion/loader.py`: `load_pdf(path) -> list[Page]`, where each page has its number and text
+- [ ] `src/research_rag/ingestion/cleaner.py`:
   - remove lines that repeat on most pages (headers/footers)
   - join hyphenated line breaks: `optimiza-\ntion` → `optimization`
   - collapse extra whitespace
-- [ ] `research_rag/ingestion/chunker.py`: token-aware sliding window using `settings.chunk_size` and `settings.chunk_overlap`; a chunk keeps the page it **starts** on
-- [ ] `research_rag/ingestion/run.py`: `python -m research_rag.ingestion.run` prints chunk counts per paper
+- [ ] `src/research_rag/ingestion/chunker.py`: token-aware sliding window using `settings.chunk_size` and `settings.chunk_overlap`; a chunk keeps the page it **starts** on
+- [ ] `src/research_rag/ingestion/run.py`: `python -m research_rag.ingestion.run` prints chunk counts per paper
 - [ ] `tests/test_chunker.py`:
   - no chunk is longer than `chunk_size`
   - consecutive chunks overlap by `chunk_overlap` tokens

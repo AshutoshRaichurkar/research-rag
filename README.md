@@ -51,18 +51,21 @@ Put PDFs in `data/papers/` (they are git-ignored).
 ## Project layout
 
 ```
-research_rag/
-  ingestion/    PDF parsing, cleaning, chunking
-  embeddings/   embedding model + vector store writes
-  retrieval/    vector, keyword and hybrid search, reranking
-  generation/   prompts, LLM client, guardrails
-  evals/        retrieval and answer-quality evaluation
-  api/          FastAPI service
-  config.py     settings from .env
-db/init.sql     database setup
-evals/          golden dataset and results
-notebooks/      experiments
-tests/
+src/research_rag/     the Python package (all product code)
+  ingestion/          PDF parsing, cleaning, chunking
+  embeddings/         embedding model + vector store writes
+  retrieval/          vector, keyword and hybrid search, reranking
+  generation/         prompts, LLM client, guardrails
+  evals/              retrieval and answer-quality evaluation
+  api/                FastAPI service
+  config.py           settings from .env
+tests/                pytest tests
+db/init.sql           database setup (runs when the database is first created)
+docker-compose.yml    Postgres + pgvector
+evals/                golden dataset and eval results (data, not code)
+notebooks/            experiments and learning notebooks
+data/papers/          PDFs (git-ignored)
+course/               the 14-day study guides
 ```
 
 ## Roadmap

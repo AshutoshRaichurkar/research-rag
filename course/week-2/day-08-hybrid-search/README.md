@@ -79,7 +79,7 @@ Postgres full-text ranking isn't exactly BM25, but it plays the same role. If yo
   CREATE INDEX IF NOT EXISTS document_chunks_text_search_gin
     ON document_chunks USING gin (text_search);
   ```
-- [ ] `research_rag/retrieval/keyword.py`:
+- [ ] `src/research_rag/retrieval/keyword.py`:
   ```sql
   SELECT id, source, page, text,
          ts_rank_cd(text_search, websearch_to_tsquery('english', %s)) AS score
@@ -88,7 +88,7 @@ Postgres full-text ranking isn't exactly BM25, but it plays the same role. If yo
   ORDER BY score DESC
   LIMIT %s;
   ```
-- [ ] `research_rag/retrieval/hybrid.py`: `rrf_merge(lists, k_const=60)` and `hybrid_search(query, k=5, candidates=20)`
+- [ ] `src/research_rag/retrieval/hybrid.py`: `rrf_merge(lists, k_const=60)` and `hybrid_search(query, k=5, candidates=20)`
 - [ ] `tests/test_rrf.py`: reproduce the worked example (order B, C, A, D)
 - [ ] Add `RETRIEVAL_MODE=vector|hybrid` to settings and use it in `rag.py` and the eval runner
 - [ ] Run evals in both modes. Add a README row. Compare results for the "exact term" question type.

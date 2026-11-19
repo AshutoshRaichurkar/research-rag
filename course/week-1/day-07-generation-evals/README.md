@@ -71,12 +71,12 @@ flowchart TB
 
 ## What to implement
 
-- [ ] `research_rag/evals/judge.py`: two prompts that return JSON:
+- [ ] `src/research_rag/evals/judge.py`: two prompts that return JSON:
   - faithfulness: `{"claims": [{"claim": "...", "supported": true}], "score": 0.5}`
   - relevance: `{"score": 1-5, "reason": "..."}`
 - [ ] Parse the JSON defensively: if the judge returns broken JSON, retry once, then mark the item `judge_error` (never crash the run)
-- [ ] `research_rag/evals/generation_eval.py`: run `rag.answer()` on every question and compute faithfulness, relevance and **abstention accuracy** (share of unanswerable questions answered "I don't know")
-- [ ] `research_rag/evals/run.py`: one command runs retrieval + generation evals and writes one results file
+- [ ] `src/research_rag/evals/generation_eval.py`: run `rag.answer()` on every question and compute faithfulness, relevance and **abstention accuracy** (share of unanswerable questions answered "I don't know")
+- [ ] `src/research_rag/evals/run.py`: one command runs retrieval + generation evals and writes one results file
 - [ ] Hand-grade 10 answers and record how often the judge agreed with you
 - [ ] **Experiment:** fixed vs. section chunking. Add both rows to the README table and keep the winner.
 

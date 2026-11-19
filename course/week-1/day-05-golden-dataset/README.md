@@ -66,7 +66,7 @@ flowchart LR
   ```
   Use `content_hash`, not `id`: hashes stay the same if you rebuild the database, while IDs change.
 - [ ] At least 5 unanswerable questions (`"relevant_chunk_hashes": []`) and 3 adversarial ones
-- [ ] `research_rag/evals/dataset.py`: a `GoldenItem` model and `load_golden(path)`, which fails loudly on bad lines
+- [ ] `src/research_rag/evals/dataset.py`: a `GoldenItem` model and `load_golden(path)`, which fails loudly on bad lines
 - [ ] `tests/test_golden.py`: every line parses, IDs are unique, and every hash exists in the database (skip that check if the database isn't running)
 
 ## Done when

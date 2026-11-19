@@ -101,8 +101,8 @@ erDiagram
   CREATE INDEX IF NOT EXISTS document_chunks_embedding_hnsw
       ON document_chunks USING hnsw (embedding vector_cosine_ops);
   ```
-- [ ] `research_rag/embeddings/embedder.py`: load the model once, `embed(texts) -> np.ndarray`, batch size 64, `normalize_embeddings=True`
-- [ ] `research_rag/embeddings/store.py`: open a connection, `register_vector(conn)`, bulk insert with `ON CONFLICT (content_hash) DO NOTHING`
+- [ ] `src/research_rag/embeddings/embedder.py`: load the model once, `embed(texts) -> np.ndarray`, batch size 64, `normalize_embeddings=True`
+- [ ] `src/research_rag/embeddings/store.py`: open a connection, `register_vector(conn)`, bulk insert with `ON CONFLICT (content_hash) DO NOTHING`
 - [ ] Extend `ingestion/run.py`: load → clean → chunk → embed → store
 - [ ] Sanity query in `psql`: the 3 chunks closest to the first chunk's embedding should be from the same paper
 - [ ] `tests/test_store.py`: inserting the same chunks twice leaves the row count unchanged

@@ -84,17 +84,17 @@ sequenceDiagram
 
 ## What to implement
 
-- [ ] `research_rag/retrieval/search.py`: `search(query, k=5) -> list[RetrievedChunk]` (chunk + similarity score):
+- [ ] `src/research_rag/retrieval/search.py`: `search(query, k=5) -> list[RetrievedChunk]` (chunk + similarity score):
   ```sql
   SELECT id, source, page, text, 1 - (embedding <=> %s) AS score
   FROM document_chunks
   ORDER BY embedding <=> %s
   LIMIT %s;
   ```
-- [ ] `research_rag/generation/prompts.py`: one prompt template with a version string, e.g. `PROMPT_VERSION = "v1"`. Keep prompts out of your logic so you can change and compare them.
-- [ ] `research_rag/generation/llm.py`: `generate(prompt, temperature=0) -> str`, calling Ollama with a timeout and one retry
-- [ ] `research_rag/generation/citations.py`: find `[n]` in the answer and map it to the chunk's source and page; drop numbers that don't exist
-- [ ] `research_rag/rag.py`: `answer(question) -> Answer` with `text`, `citations`, `chunks`, `prompt_version`, `latency_ms`
+- [ ] `src/research_rag/generation/prompts.py`: one prompt template with a version string, e.g. `PROMPT_VERSION = "v1"`. Keep prompts out of your logic so you can change and compare them.
+- [ ] `src/research_rag/generation/llm.py`: `generate(prompt, temperature=0) -> str`, calling Ollama with a timeout and one retry
+- [ ] `src/research_rag/generation/citations.py`: find `[n]` in the answer and map it to the chunk's source and page; drop numbers that don't exist
+- [ ] `src/research_rag/rag.py`: `answer(question) -> Answer` with `text`, `citations`, `chunks`, `prompt_version`, `latency_ms`
 - [ ] A CLI: `python -m research_rag.rag "What is LoRA?"` prints the answer and its sources
 
 ## Done when

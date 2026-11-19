@@ -65,9 +65,9 @@ flowchart LR
 
 ## What to implement
 
-- [ ] `research_rag/evals/metrics.py`: `recall_at_k(retrieved, relevant, k)` and `reciprocal_rank(retrieved, relevant)`
+- [ ] `src/research_rag/evals/metrics.py`: `recall_at_k(retrieved, relevant, k)` and `reciprocal_rank(retrieved, relevant)`
 - [ ] `tests/test_metrics.py`: reproduce the worked example above exactly
-- [ ] `research_rag/evals/retrieval_eval.py`:
+- [ ] `src/research_rag/evals/retrieval_eval.py`:
   - run `search(q, k=10)` for each answerable question
   - compute recall@1, 3, 5, 10 and MRR
   - save a dated JSON file with the **config** (model, chunk size, overlap, k) **and** per-question results

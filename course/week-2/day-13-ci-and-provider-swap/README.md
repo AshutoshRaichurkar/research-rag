@@ -62,7 +62,7 @@ flowchart LR
 
 ## What to implement
 
-- [ ] `research_rag/generation/llm.py`: `LLMClient` protocol plus `OllamaClient`, `HostedAPIClient`, `FakeClient`; `get_llm()` picks one from `LLM_PROVIDER`
+- [ ] `src/research_rag/generation/llm.py`: `LLMClient` protocol plus `OllamaClient`, `HostedAPIClient`, `FakeClient`; `get_llm()` picks one from `LLM_PROVIDER`
 - [ ] Replace direct Ollama calls everywhere with `get_llm()`
 - [ ] `tests/fixtures/`: 2–3 small open-access PDFs (or short text files) for CI ingestion
 - [ ] `evals/golden_smoke.jsonl`: 10 questions about those fixtures
