@@ -2,10 +2,9 @@ from research_rag.ingestion.cleaner import (
     clean_text,
     fix_ligatures,
     join_hyphenated_words,
+    remove_control_characters,
     remove_noise_lines,
 )
-
-
 
 
 def test_fix_ligatures_turns_special_fi_into_normal_letters():
@@ -32,3 +31,7 @@ def test_remove_noise_lines_keeps_numbers_in_the_middle():
 
 def test_clean_text_produces_one_flowing_line():
     assert clean_text("first line\nsecond   line\n\nthird") == "first line second line third"
+
+
+def test_remove_control_characters_drops_nul_but_keeps_line_breaks():
+    assert remove_control_characters("log \x00p(y|x) \x01\nnext line") == "log p(y|x) \nnext line"

@@ -1,6 +1,6 @@
 import pytest
 
-from research_rag.ingestion.chunker import ENCODING, chunk_pages, split_into_windows
+from research_rag.ingestion.chunker import chunk_pages, split_into_windows
 from research_rag.ingestion.models import Page
 
 
@@ -37,6 +37,7 @@ def make_pages() -> list[Page]:
     page_two = Page(source="test.pdf", page_number=2, text=" ".join(second_words))
     return [page_one, page_two]
 
+
 def test_chunk_pages_respects_size_and_builds_ids():
     chunks = chunk_pages(make_pages(), size=200, overlap=40)
     assert len(chunks) > 1
@@ -53,5 +54,5 @@ def test_chunk_pages_tracks_the_starting_page():
 
 def test_consecutive_chunks_share_the_overlap():
     chunks = chunk_pages(make_pages(), size=200, overlap=40)
-    start_of_second = chunks[1].text[:50]        # the first 50 characters of chunk 1
-    assert start_of_second in chunks[0].text      # ...must also appear in chunk 0
+    start_of_second = chunks[1].text[:50]  # the first 50 characters of chunk 1
+    assert start_of_second in chunks[0].text  # ...must also appear in chunk 0

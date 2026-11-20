@@ -72,7 +72,9 @@ The timings are rough CPU estimates. Measure your own.
 - [ ] `src/research_rag/retrieval/rerank.py`:
   ```python
   from sentence_transformers import CrossEncoder
+
   _model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")
+
 
   def rerank(query, chunks, top_n=5):
       pairs = [(query, chunk.text) for chunk in chunks]

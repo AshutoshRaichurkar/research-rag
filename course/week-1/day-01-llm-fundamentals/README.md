@@ -99,16 +99,24 @@ Create `notebooks/week-1/day-01-llm-fundamentals/01_fundamentals.ipynb`:
 - [ ] Call Ollama from Python:
   ```python
   import httpx
-  r = httpx.post("http://localhost:11434/api/generate",
-                 json={"model": "llama3.1:8b", "prompt": "What is LoRA?",
-                       "stream": False, "options": {"temperature": 0}},
-                 timeout=120)
+
+  r = httpx.post(
+      "http://localhost:11434/api/generate",
+      json={
+          "model": "llama3.1:8b",
+          "prompt": "What is LoRA?",
+          "stream": False,
+          "options": {"temperature": 0},
+      },
+      timeout=120,
+  )
   print(r.json()["response"])
   ```
 - [ ] Ask the same question 3 times at temperature 0 and 3 times at 1. Compare the answers.
 - [ ] Embed 6 sentences (2 about cats, 2 about finance, 2 about your paper topic) and print the cosine similarity matrix:
   ```python
   from sentence_transformers import SentenceTransformer, util
+
   model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
   emb = model.encode(sentences, normalize_embeddings=True)
   print(util.cos_sim(emb, emb))

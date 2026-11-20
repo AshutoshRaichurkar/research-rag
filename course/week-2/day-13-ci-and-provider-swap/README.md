@@ -2,6 +2,9 @@
 
 **Goal:** every push automatically runs lint, tests and a small eval, and the LLM provider can be switched with one setting.
 
+> A ready-made starting point is waiting in `parking-lot/ci.yml` (lint, format check and tests). Move it to `.github/workflows/ci.yml` and extend it today.
+
+
 ## What you'll study
 
 - **Continuous integration** (CI) with GitHub Actions
@@ -25,9 +28,14 @@ A travel adapter lets one charger fit any country's outlet. Your code calls `llm
 class LLMClient(Protocol):
     def generate(self, prompt: str, temperature: float = 0) -> str: ...
 
-class OllamaClient: ...      # local
-class HostedAPIClient: ...   # cloud provider
-class FakeClient: ...        # tests: returns "LoRA freezes weights [1]."
+
+class OllamaClient: ...  # local
+
+
+class HostedAPIClient: ...  # cloud provider
+
+
+class FakeClient: ...  # tests: returns "LoRA freezes weights [1]."
 ```
 
 ![The adapter pattern: the rest of the code only knows `LLMClient`.](fig-adapter.png)

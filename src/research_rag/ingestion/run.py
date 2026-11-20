@@ -29,7 +29,7 @@ def ingest_all() -> list[Chunk]:
 
 def save_chunks(chunks: list[Chunk], path: Path = CHUNKS_FILE) -> None:
     """Write one chunk per line as JSON (the JSON Lines format)."""
-    path.parent.mkdir(parents=True, exist_ok=True)     # create data/processed/ if needed
+    path.parent.mkdir(parents=True, exist_ok=True)  # create data/processed/ if needed
     with open(path, "w") as file:
         for chunk in chunks:
             file.write(chunk.model_dump_json() + "\n")

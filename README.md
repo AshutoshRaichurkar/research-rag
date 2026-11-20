@@ -66,6 +66,7 @@ evals/                golden dataset and eval results (data, not code)
 notebooks/            experiments and learning notebooks, one folder per week and day
 data/papers/          PDFs (git-ignored)
 course/               the 14-day study guides
+parking-lot/          deferred ideas and ready-to-use extras (e.g. the CI workflow)
 ```
 
 ## Roadmap
