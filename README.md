@@ -72,7 +72,7 @@ course/               the 14-day study guides
 
 - [x] Day 0: project skeleton
 - [x] Day 1: LLM and embedding fundamentals
-- [ ] Day 2: ingestion and chunking
+- [x] Day 2: ingestion and chunking
 - [ ] Day 3: embeddings and vector store
 - [ ] Day 4: baseline RAG with citations
 - [ ] Days 5–7: evaluation suite

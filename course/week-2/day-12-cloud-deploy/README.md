@@ -20,6 +20,10 @@ At home you have a big oven (your Mac's GPU running llama3.1:8b). The food truck
 
 For a portfolio demo, **option 3 or option 1** is usually right. Your code already supports this if the LLM call goes through one `generate()` function (you'll formalize that tomorrow).
 
+![The three ways to run the LLM in the cloud. Green = the usual picks for a portfolio demo.](fig-llm-options.png)
+
+*The three ways to run the LLM in the cloud. Green = the usual picks for a portfolio demo.*
+
 ### Secrets: keys never go in git
 API keys and database passwords go in environment variables on the server or in AWS Secrets Manager, **never** in the repo. A leaked key on GitHub can be found by bots within minutes.
 

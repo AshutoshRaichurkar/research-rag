@@ -14,6 +14,7 @@ venv/
 # Data (keep the folder, not the PDFs)
 data/papers/*
 !data/papers/.gitkeep
+data/processed/
 
 # Eval run outputs
 evals/results/

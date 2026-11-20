@@ -24,6 +24,10 @@ Break the answer into separate claims and check each one against the retrieved c
 
 Low faithfulness means the model is **adding things** that aren't in your papers. That's hallucination, even when retrieval worked.
 
+![Faithfulness checks each claim in the answer against the retrieved chunks.](fig-faithfulness.png)
+
+*Faithfulness checks each claim in the answer against the retrieved chunks.*
+
 ### Answer relevance: did it answer what was asked?
 Q: "How much memory does QLoRA save?" A: "QLoRA was published in 2023 by Dettmers et al. [2]" is faithful (true and cited) but **doesn't answer the question**.
 
@@ -35,6 +39,10 @@ Checking hundreds of claims by hand is slow, so you ask an LLM to grade, with a 
 
 ### An experiment: change one thing, measure everything
 Run the full eval with fixed-size chunks, then again with section-based chunks (Day 2 stretch). Same questions, same model, same k. **Only one variable changes.** The numbers decide, not your intuition.
+
+![What an A/B result looks like: one variable changed, every metric compared.](fig-ab-test.png)
+
+*What an A/B result looks like: one variable changed, every metric compared.*
 
 ## Diagram
 

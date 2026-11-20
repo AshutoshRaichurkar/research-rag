@@ -22,6 +22,10 @@ The order form says "question: text, required, max 1,000 characters; top_k: numb
 ### Streaming: watching someone type
 Without streaming, the user stares at a spinner for 8 seconds and then the whole answer appears. With streaming, words appear as they're generated, like watching someone type. **Total time is the same, but it feels much faster.** The key number is **time to first token**.
 
+![Streaming doesn't make the answer faster; it makes the wait feel shorter.](fig-streaming.png)
+
+*Streaming doesn't make the answer faster; it makes the wait feel shorter.*
+
 ### Load models once
 Loading the embedding model and reranker takes seconds. Doing it on every request is like a waiter preheating the oven for every order. Load them once when the app starts (FastAPI's `lifespan`), then reuse them.
 

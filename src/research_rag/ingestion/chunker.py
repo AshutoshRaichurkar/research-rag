@@ -26,6 +26,8 @@ def split_into_windows(token_ids: list[int], size: int, overlap: int) -> list[li
 
 def chunk_pages(pages: list[Page], size: int, overlap: int) -> list[Chunk]:
     """Clean every page, join them into one token stream, and cut it into overlapping chunks."""
+    if not pages:
+        return []
     all_tokens = []
     token_pages = []        # the page number of each token, same length as all_tokens
 

@@ -41,6 +41,10 @@ The 60 is a standard constant that keeps the top spot from dominating.
 
 Final order: **B, C, A, D**. Chunk B wins because **both** librarians liked it.
 
+![Each bar shows where a chunk's RRF score comes from.](fig-rrf.png)
+
+*Each bar shows where a chunk's RRF score comes from.*
+
 ## Diagram
 
 ![Diagram](diagram-1.png)

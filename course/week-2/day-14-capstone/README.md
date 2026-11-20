@@ -26,6 +26,10 @@ Architecture, design decisions and next steps come after.
 
 Your eval history from Days 5–11 *is* the story. Use your real numbers, not these examples.
 
+![The chart to put in your README: what each change bought, and what it cost.](fig-results-story.png)
+
+*The chart to put in your README: what each change bought, and what it cost.*
+
 ### Every choice is an interview question
 "Why chunk size 200?" "Why pgvector and not Pinecone?" "How do you know the judge is reliable?" If you can answer each with **what you tried, what you measured, and why you chose it**, you'll stand out.
 

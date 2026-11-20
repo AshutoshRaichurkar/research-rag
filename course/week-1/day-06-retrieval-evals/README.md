@@ -37,6 +37,14 @@ Recall tells you whether the answer is reachable. MRR tells you whether it's nea
 
 Skip unanswerable questions for these metrics; there's no correct chunk to find. You'll score them on Day 7.
 
+![The worked example as a chart: each bar is one question's reciprocal rank.](fig-reciprocal-rank.png)
+
+*The worked example as a chart: each bar is one question's reciprocal rank.*
+
+![Plot recall@k for k = 1 to 10 to choose k from data instead of guessing.](fig-recall-curve.png)
+
+*Plot recall@k for k = 1 to 10 to choose k from data instead of guessing.*
+
 ## Diagram
 
 ![Diagram](diagram-1.png)

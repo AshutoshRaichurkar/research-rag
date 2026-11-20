@@ -37,8 +37,16 @@ QUESTION:
 How does QLoRA reduce memory compared to LoRA?
 ```
 
+![The three parts of a RAG prompt, in order.](fig-prompt-anatomy.png)
+
+*The three parts of a RAG prompt, in order.*
+
 ### Citations: footnotes you can check
 The model writes `[2]`. Your code knows `[2]` = `qlora.pdf, page 2`, so the API returns a clickable source. **Citations turn "trust me" into "check me."**
+
+![How a `[2]` in the answer becomes a clickable source.](fig-citations.png)
+
+*How a `[2]` in the answer becomes a clickable source.*
 
 ### Baseline: the "before" photo
 This first version is deliberately simple. It's the "before" photo for every later improvement. Don't optimize yet; get it working and measured.

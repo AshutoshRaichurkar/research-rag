@@ -28,11 +28,23 @@ pgvector adds a `vector(384)` column type and distance operators to Postgres. Yo
 
 With only a few thousand chunks, exact search would be fine. You add HNSW because a production system needs it and interviewers will ask about it.
 
+![HNSW's layers: the search starts where points are sparse and drops down layer by layer.](fig-hnsw.png)
+
+*HNSW's layers: the search starts where points are sparse and drops down layer by layer.*
+
 ### Idempotent loads: pressing the elevator button twice
 Pressing an elevator button twice doesn't call two elevators. Running ingestion twice shouldn't create duplicate chunks either. The fix: give each chunk a **content hash** (a fingerprint of its text + source) with a `UNIQUE` constraint, and insert with `ON CONFLICT DO NOTHING`.
 
+![Running ingestion twice: the second insert of the same chunk is skipped, so nothing is duplicated.](fig-idempotent.png)
+
+*Running ingestion twice: the second insert of the same chunk is skipped, so nothing is duplicated.*
+
 ### Same model for documents and questions
 Embeddings from different models live in different "maps". Embedding documents with model A and questions with model B is like using GPS coordinates from Earth on a map of Mars. Always use **one model for both**.
+
+![What vector search does: return the chunks nearest to the question.](fig-meaning-map.png)
+
+*What vector search does: return the chunks nearest to the question.*
 
 ## Diagram
 

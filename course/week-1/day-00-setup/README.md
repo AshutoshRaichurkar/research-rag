@@ -35,6 +35,10 @@ flowchart LR
 
 </details>
 
+![The repo layout: product code lives in `src/research_rag/`, one folder per pipeline stage.](fig-repo-layout.png)
+
+*The repo layout: product code lives in `src/research_rag/`, one folder per pipeline stage.*
+
 ## Tools and services to install
 
 | Tool | Why | Install |

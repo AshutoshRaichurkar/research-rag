@@ -24,6 +24,10 @@ Chunk 2:                                             [ small adapter matrices. T
                                                        ^^^ overlap ^^^
 ```
 
+![The sliding window: 200 tokens per chunk, moving forward 160 each time, so 40 tokens repeat.](fig-sliding-window.png)
+
+*The sliding window: 200 tokens per chunk, moving forward 160 each time, so 40 tokens repeat.*
+
 ### PDFs are messier than they look
 A PDF stores **where to draw letters on a page**, not paragraphs. Extraction can give you:
 - Page headers like "arXiv:2106.09685v2" repeated on every page
@@ -32,11 +36,23 @@ A PDF stores **where to draw letters on a page**, not paragraphs. Extraction can
 
 Garbage in, garbage out. A chunk full of headers wastes space and confuses search.
 
+![The order of the cleaning steps matters: rules that look at lines must run before the line breaks are removed.](fig-cleaning-order.png)
+
+*The order of the cleaning steps matters: rules that look at lines must run before the line breaks are removed.*
+
+![A real lesson from this project: always count what a cleaning rule changes across the whole dataset.](fig-rule-counts.png)
+
+*A real lesson from this project: always count what a cleaning rule changes across the whole dataset.*
+
 ### Metadata: the card's label
 Every chunk stores where it came from: `source`, `page`, `chunk_index`. Without it you can't cite "Hu et al., p. 4", and citations are what make users trust the answer.
 
 ### The chunk size trap
 Your embedding model, all-MiniLM-L6-v2, **only reads the first 256 of its own tokens** and silently ignores the rest. A 400-token chunk would be cut off without any error. That's why this project uses **200 tokens with 40 overlap**. Lesson: **always check your embedding model's max input length before choosing a chunk size.**
+
+![Each model has its own tokenizer, so a token count only means something together with the tokenizer that made it.](fig-two-tokenizers.png)
+
+*Each model has its own tokenizer, so a token count only means something together with the tokenizer that made it.*
 
 ## Diagram
 
@@ -54,6 +70,10 @@ flowchart LR
 ```
 
 </details>
+
+![What the pipeline produced for this project's 12 papers.](fig-chunks-per-paper.png)
+
+*What the pipeline produced for this project's 12 papers.*
 
 ## Tools and services
 

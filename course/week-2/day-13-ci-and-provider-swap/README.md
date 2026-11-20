@@ -30,6 +30,10 @@ class HostedAPIClient: ...   # cloud provider
 class FakeClient: ...        # tests: returns "LoRA freezes weights [1]."
 ```
 
+![The adapter pattern: the rest of the code only knows `LLMClient`.](fig-adapter.png)
+
+*The adapter pattern: the rest of the code only knows `LLMClient`.*
+
 ## Diagram
 
 ![Diagram](diagram-1.png)

@@ -24,6 +24,14 @@ You'd never interview all 1,000. That's why you rerank only the top 20.
 | Accuracy | good | better |
 | Used for | searching thousands of chunks | reordering the top 20 |
 
+![How many chunks each stage handles, using this project's 1,405 chunks.](fig-funnel.png)
+
+*How many chunks each stage handles, using this project's 1,405 chunks.*
+
+![Why the reranker is slower but more accurate: it reads the question and the chunk together.](fig-bi-vs-cross.png)
+
+*Why the reranker is slower but more accurate: it reads the question and the chunk together.*
+
 ### Example of what reranking fixes
 Question: "Does LoRA increase inference latency?"
 - Embedding search ranks a chunk about **training** latency first, because it shares many words.
