@@ -11,6 +11,7 @@ from pathlib import Path
 # This file is src/research_rag/paths.py, so the project root is two folders up from its folder.
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
+
 DATA_DIR = PROJECT_ROOT / "data"
 PAPERS_DIR = DATA_DIR / "papers"
 EVALS_DIR = PROJECT_ROOT / "evals"
