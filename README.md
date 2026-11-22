@@ -74,7 +74,7 @@ parking-lot/          deferred ideas and ready-to-use extras (e.g. the CI workfl
 - [x] Day 0: project skeleton
 - [x] Day 1: LLM and embedding fundamentals
 - [x] Day 2: ingestion and chunking
-- [ ] Day 3: embeddings and vector store
+- [x] Day 3: embeddings and vector store
 - [ ] Day 4: baseline RAG with citations
 - [ ] Days 5–7: evaluation suite
 - [ ] Days 8–9: hybrid search and reranking
