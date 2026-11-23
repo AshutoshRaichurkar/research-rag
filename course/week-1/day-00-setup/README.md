@@ -66,3 +66,15 @@ Ollama runs natively, not in Docker, because Docker on a Mac can't use the Apple
 ## Done when
 
 `make test` passes, `docker ps` shows `research-rag-db` as healthy, and Ollama answers a prompt.
+
+## As built (what we actually did)
+
+| Plan | What we did | Why |
+| --- | --- | --- |
+| Generic layout | `src/research_rag/` package layout, `tests/`, `notebooks/week-N/day-NN-*/` | src layout stops tests importing the wrong copy of the code |
+| `infra/` folder | **No `infra/`**: `docker-compose.yml` and `db/init.sql` stay at the root | Simpler for a 2-week project |
+| CI from day 0 | **Parked**: `parking-lot/ci.yml` is ready to move into `.github/workflows/` | Focus on RAG first |
+| Any warehouse | **Postgres + pgvector in Docker** | Free, local, one command (`make up`) |
+| Git | `main` and `develop` protected by a ruleset; work on `feature/day-NN-*` branches, PR into `develop` | Practise the team workflow |
+
+Tooling: a `Makefile` (`install`, `up`, `down`, `reset`, `ingest`, `load`, `ask`, `test`, `lint`, `format`, `check`), and ruff pinned to `>=0.17,<0.18`, excluding `notebooks/` and `course/`.

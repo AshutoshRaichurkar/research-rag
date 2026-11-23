@@ -171,3 +171,15 @@ erDiagram
 ## Done when
 
 `make up` plus one ingestion command fills the table, and running it again doesn't change `SELECT count(*) FROM document_chunks`.
+
+## As built (what we actually did)
+
+| Plan (above) | What we did | Why |
+| --- | --- | --- |
+| `content_hash` column, `ON CONFLICT (content_hash) DO NOTHING` | `id TEXT PRIMARY KEY` (the chunk ID), `ON CONFLICT (id) DO UPDATE` (upsert, like MERGE) | IDs are already stable; an upsert also refreshes changed text |
+| Insert only | Plus `delete_stale_chunks(keep_ids)` after loading | Rows from deleted or re-chunked papers would otherwise linger |
+| Search in Python | First search written in SQL: `ORDER BY embedding <=> %(question)s LIMIT k` | See the SQL before wrapping it |
+
+Table: `document_chunks(id, source, page_number, chunk_index, text, token_count, embedding vector(384), created_at)` with an HNSW index on `vector_cosine_ops`. Tests run in a throwaway `research_rag_test` database.
+
+**Numbers:** 1,389 chunks embedded and stored in 4.2 s (about 330 chunks/s) · best search hits 0.57–0.67 similarity · off-topic "banana bread" scored 0.48, higher than "What is NF4?" at 0.43, so **no single similarity threshold works** · Seq Scan 22 ms vs HNSW 7.4 ms (the planner guessed wrong).
