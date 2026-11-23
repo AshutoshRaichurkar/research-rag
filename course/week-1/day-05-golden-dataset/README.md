@@ -66,12 +66,12 @@ flowchart LR
 
 - [ ] `evals/golden.jsonl`, 30–50 lines in this format:
   ```json
-  {"id": "q001", "question": "Why does LoRA add no inference latency?", "expected_answer": "The low-rank matrices can be merged into the frozen weights after training, so inference uses one weight matrix as before.", "relevant_chunk_hashes": ["a1b2...", "c3d4..."], "type": "conceptual"}
+  {"id": "q001", "question": "Why does LoRA add no inference latency?", "expected_answer": "The low-rank matrices can be merged into the frozen weights after training, so inference uses one weight matrix as before.", "relevant_chunk_ids": ["2106.09685.pdf::0021"], "type": "conceptual"}
   ```
-  Use `content_hash`, not `id`: hashes stay the same if you rebuild the database, while IDs change.
-- [ ] At least 5 unanswerable questions (`"relevant_chunk_hashes": []`) and 3 adversarial ones
+  We label with chunk IDs (`source::NNNN`). They stay the same when you reload, but **change if the chunk size changes** (Day 7), so relabel then.
+- [ ] At least 5 unanswerable questions (`"relevant_chunk_ids": []`) and 3 adversarial ones
 - [ ] `src/research_rag/evals/dataset.py`: a `GoldenItem` model and `load_golden(path)`, which fails loudly on bad lines
-- [ ] `tests/test_golden.py`: every line parses, IDs are unique, and every hash exists in the database (skip that check if the database isn't running)
+- [ ] `tests/test_golden.py`: every line parses, IDs are unique, and every chunk ID exists in the database (skip that check if the database isn't running)
 
 ## Done when
 
@@ -80,3 +80,26 @@ You have 30+ validated questions covering every type in the table above.
 ## Tip
 
 Write questions **before** looking at what the system retrieves. Otherwise you'll unconsciously write questions it already handles well.
+
+## As built (what we actually did)
+
+```
+questions_draft.md (written from the PDFs, no searching)
+        │  find_chunks("65.2%", source="2004.04906.pdf")   ← exact text, NOT vector search
+        ▼
+pick chunks that could answer the question ALONE
+        ▼
+evals/golden.jsonl  ──load_golden()──►  list[GoldenItem]  ──► Day 6–7 scoring
+```
+
+| Plan | What we did | Why |
+| --- | --- | --- |
+| Label with `content_hash` | Label with chunk IDs (`source::NNNN`) | IDs are stable across reloads; `test_every_chunk_id_exists_in_database` catches breakage if the chunk size changes |
+| 30–50 questions | **18 to start** (10 answerable, 5 unanswerable, 3 adversarial) | Grow to 30+ once Day 6 shows where the gaps are |
+| Any papers | The RAG-focused papers: Lost in the Middle, RAGAS, DPR, HyDE, RAG | Easier to label correctly, and they teach what we're building |
+
+**Labelling rule:** a chunk is relevant if someone could answer the question from that chunk alone. "U-shaped" matched 13 chunks; only 4 were labelled.
+
+**Trap unanswerables:** "banana bread" (*banana* appears in ReAct) and "2022 World Cup" (*World Cup* appears in the RAG paper). Search will return those chunks, but the answer isn't there.
+
+**Files:** `evals/golden.jsonl`, `evals/questions_draft.md`, `src/research_rag/evals/{dataset,find}.py`, `tests/test_golden.py` (5 tests, 33 total).

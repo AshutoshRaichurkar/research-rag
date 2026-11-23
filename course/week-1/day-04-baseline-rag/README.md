@@ -117,3 +117,28 @@ sequenceDiagram
 | Right answer, wrong citation number | The model miscounted; put the number at the start of each chunk, as above |
 | Answers ignore the context | Temperature isn't 0, or the rules are buried; put them first |
 | Very slow first call | Ollama loads the model on first use; later calls are faster |
+
+## As built (what we actually did)
+
+```
+question ─► search(k=5) ─► build_prompt (v1) ─► generate (Ollama, temp 0, num_ctx 8192)
+                                                        │
+                    Answer(text, citations, chunks, answered, prompt_version, latency_ms)
+                                                        ▲
+                                       extract_citations([n] → source, page)
+```
+
+Code: `retrieval/search.py`, `generation/{prompts,llm,citations}.py`, `rag.py`. Run it with `make ask Q="..."`. The tests mock `search` and `generate` with `monkeypatch.setattr`, so they need neither Postgres nor Ollama.
+
+**Baseline results (prompt v1, k=5):**
+
+| Question | Result | Cause |
+| --- | --- | --- |
+| Does LoRA add latency? | ✅ correct, cites p.4–5 | – |
+| Banana bread / World Cup | ✅ "I don't know" | – |
+| QLoRA memory | ⚠️ partial (paging only, missed NF4) | answer spread over several chunks |
+| HyDE / NF4 | ⚠️ vague / appendix numbers | weak chunks retrieved |
+| Lost in the middle | ❌ false refusal | **retrieval**: matched "lost" in golf-ball maths |
+| ReAct | ❌ false refusal | **generation + chunking**: chunk starts mid-word "Act is…" |
+
+**Debug rule:** when an answer is wrong, first check whether the answer was in the retrieved chunks. Answers took 3.6–9 s.

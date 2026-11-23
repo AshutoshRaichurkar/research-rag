@@ -107,3 +107,21 @@ Running ingestion prints counts per paper, and 5 random chunks read like clean t
 ## Stretch
 
 Write a second chunker that splits on section headings ("1 Introduction", "2 Related Work"). You'll measure which one retrieves better on Day 7.
+
+## As built (what we actually did)
+
+```
+PDF ──load_pdf──► Page(source, page_number, text)
+     ──clean_text──► ligatures → control chars → noise lines → hyphen joins → whitespace
+     ──chunk_pages──► Chunk(id="2106.09685.pdf::0003", page_number, text, token_count)
+     ──make ingest──► data/processed/chunks.jsonl
+```
+
+| Plan | What we did | Why |
+| --- | --- | --- |
+| Remove page numbers anywhere | Only check a page's **first or last line** | The broad regex deleted 1,300 lines of table numbers |
+| Clean text | Added `remove_control_characters` (Day 3) | PDF equation brackets come out as NUL characters, which Postgres rejects |
+| Chunk IDs | `source::NNNN` (stable while chunk size stays the same) | Easy to read and debug |
+| Chunk size | 200 tiktoken (`o200k_base`) tokens, 40 overlap | 3 chunks exceed MiniLM's 254-token limit; parked for Day 7 |
+
+**Numbers:** 12 papers · 253 pages · 1,405 chunks (1,389 after Day 3's control-character fix) · 205 noise lines removed.

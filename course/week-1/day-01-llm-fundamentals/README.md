@@ -131,3 +131,9 @@ You can explain to a non-engineer, in two minutes, why RAG exists, using your ow
 ## Go deeper (optional)
 
 - Andrej Karpathy, "Intro to Large Language Models" (YouTube, 1 hour)
+
+## As built (what we actually did)
+
+- Notebook: `notebooks/week-1/day-01-llm-fundamentals/01_fundamentals.ipynb`, covering token counting, an `ask()` helper for Ollama, a temperature experiment, an embedding similarity grid, and a tiny RAG loop over 4 paragraphs. See also `RECAP.md` in this folder.
+- **Key finding:** without context, `llama3.1:8b` invented what LoRA stands for twice, with two different fake answers. With the abstract in the prompt, it answered correctly. That's grounding.
+- **Numbers:** about 0.73 words per token · about 46 tokens/s on a Mac · paraphrases about 0.6 cosine, unrelated sentences about 0.05 · "LoRA" vs "Low-rank adaptation" only 0.40 (the embedding model doesn't know the acronym).

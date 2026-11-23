@@ -56,7 +56,7 @@ Skip unanswerable questions for these metrics; there's no correct chunk to find.
 flowchart LR
     G[(golden.jsonl)] --> L{For each question}
     L --> S["search(question, k=10)"]
-    S --> C["Compare returned hashes<br/>with relevant_chunk_hashes"]
+    S --> C["Compare returned IDs<br/>with relevant_chunk_ids"]
     C --> M["recall@1, @3, @5, @10<br/>MRR"]
     M --> F["evals/results/2026-11-24_retrieval.json<br/>(config + metrics + per-question detail)"]
 ```
