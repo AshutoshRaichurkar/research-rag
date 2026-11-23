@@ -19,5 +19,5 @@ def find_chunks(phrase: str, source: str | None = None, preview: int = 150) -> N
     print(f"{len(rows)} chunk(s) contain {phrase!r}")
     for chunk_id, page_number, text in rows:
         start = text.lower().find(phrase.lower())
-        snippet = text[max(start - 60, 0) : start + preview].replace("\n", " ")
+        snippet = text[max(start, 0) : start + preview].replace("\n", " ")
         print(f"  {chunk_id}  p.{page_number}  …{snippet}…")
