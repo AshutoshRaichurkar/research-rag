@@ -31,3 +31,6 @@ check: lint test  ## run everything CI runs, before you push
 
 load:  ## embed every chunk and store it in Postgres
 	.venv/bin/python -m research_rag.embeddings.load
+
+ask:  ## ask a question: make ask Q="your question"
+	.venv/bin/python -m research_rag.rag "$(Q)"
