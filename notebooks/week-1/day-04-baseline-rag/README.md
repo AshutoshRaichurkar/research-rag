@@ -2,4 +2,4 @@
 
 Study guide: [Day 4: Baseline RAG with citations](../../../course/week-1/day-04-baseline-rag/README.md)
 
-- _Notebooks for this day go here._
+- [`04_baseline_rag.ipynb`](04_baseline_rag.ipynb)
