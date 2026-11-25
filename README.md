@@ -7,11 +7,11 @@ Built as a production-shaped RAG system: local LLM, Postgres/pgvector, an evalua
 
 ## Results
 
-Retrieval and answer quality on a hand-labeled golden set (filled in from Day 5 on).
+Retrieval and answer quality on a hand-labeled golden set (`evals/golden.jsonl`: 10 answerable questions so far). Faithfulness and latency are added on Day 7.
 
 | Config | Recall@5 | MRR | Faithfulness | Latency (p50) |
 | --- | --- | --- | --- | --- |
-| Baseline (vector only) | – | – | – | – |
+| Baseline (vector only) | 0.50 | 0.39 | – | – |
 | Hybrid (vector + BM25) | – | – | – | – |
 | Hybrid + rerank | – | – | – | – |
 

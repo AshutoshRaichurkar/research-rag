@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-11-25T00:27:08",
+  "run_at": "2026-11-25T16:59:15",
   "config": {
     "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
     "chunk_size": 200,
