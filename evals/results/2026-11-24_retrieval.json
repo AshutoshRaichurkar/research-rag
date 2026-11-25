@@ -1,0 +1,311 @@
+{
+  "run_at": "2026-11-24T12:47:15",
+  "config": {
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "chunk_size": 200,
+    "chunk_overlap": 40,
+    "max_k": 10,
+    "search": "vector"
+  },
+  "question_count": 10,
+  "recall": {
+    "1": 0.0,
+    "3": 0.1,
+    "5": 0.2,
+    "10": 0.4
+  },
+  "mrr": 0.077,
+  "questions": [
+    {
+      "id": "q001",
+      "type": "conceptual",
+      "question": "What happens to a language model's accuracy when the relevant document is placed in the middle of a long context?",
+      "relevant_chunk_ids": [
+        "2307.03172.pdf::0001",
+        "2307.03172.pdf::0003",
+        "2307.03172.pdf::0006",
+        "2307.03172.pdf::0007"
+      ],
+      "retrieved_chunk_ids": [
+        "2307.03172.pdf::0002",
+        "2307.03172.pdf::0000",
+        "2307.03172.pdf::0052",
+        "2307.03172.pdf::0035",
+        "2307.03172.pdf::0067",
+        "2307.03172.pdf::0012",
+        "2307.03172.pdf::0066",
+        "2307.03172.pdf::0003",
+        "2307.03172.pdf::0001",
+        "2307.03172.pdf::0084"
+      ],
+      "first_relevant_position": 8,
+      "recall": {
+        "1": 0.0,
+        "3": 0.0,
+        "5": 0.0,
+        "10": 1.0
+      },
+      "reciprocal_rank": 0.125
+    },
+    {
+      "id": "q002",
+      "type": "factual",
+      "question": "Which two tasks does the Lost in the Middle paper use to study how models use long contexts?",
+      "relevant_chunk_ids": [
+        "2307.03172.pdf::0000"
+      ],
+      "retrieved_chunk_ids": [
+        "2307.03172.pdf::0066",
+        "2307.03172.pdf::0067",
+        "2307.03172.pdf::0000",
+        "2307.03172.pdf::0054",
+        "2307.03172.pdf::0055",
+        "2307.03172.pdf::0052",
+        "2307.03172.pdf::0057",
+        "2307.03172.pdf::0012",
+        "2307.03172.pdf::0026",
+        "2005.11401.pdf::0060"
+      ],
+      "first_relevant_position": 3,
+      "recall": {
+        "1": 0.0,
+        "3": 1.0,
+        "5": 1.0,
+        "10": 1.0
+      },
+      "reciprocal_rank": 0.3333333333333333
+    },
+    {
+      "id": "q003",
+      "type": "multi_chunk",
+      "question": "In Lost in the Middle, does giving the model more retrieved documents keep improving accuracy?",
+      "relevant_chunk_ids": [
+        "2307.03172.pdf::0010",
+        "2307.03172.pdf::0011"
+      ],
+      "retrieved_chunk_ids": [
+        "2307.03172.pdf::0051",
+        "2005.11401.pdf::0044",
+        "2307.03172.pdf::0040",
+        "2005.11401.pdf::0045",
+        "2307.03172.pdf::0012",
+        "2005.11401.pdf::0106",
+        "2310.11511.pdf::0059",
+        "2004.04906.pdf::0011",
+        "2004.04906.pdf::0029",
+        "2004.04906.pdf::0077"
+      ],
+      "first_relevant_position": null,
+      "recall": {
+        "1": 0.0,
+        "3": 0.0,
+        "5": 0.0,
+        "10": 0.0
+      },
+      "reciprocal_rank": 0.0
+    },
+    {
+      "id": "q004",
+      "type": "exact_term",
+      "question": "What does RAGAS stand for, and what is it for?",
+      "relevant_chunk_ids": [
+        "2309.15217.pdf::0000"
+      ],
+      "retrieved_chunk_ids": [
+        "2005.11401.pdf::0042",
+        "2309.15217.pdf::0012",
+        "2005.11401.pdf::0045",
+        "2005.11401.pdf::0098",
+        "2309.15217.pdf::0026",
+        "2005.11401.pdf::0032",
+        "2005.11401.pdf::0012",
+        "2310.11511.pdf::0005",
+        "2005.11401.pdf::0104",
+        "2005.11401.pdf::0043"
+      ],
+      "first_relevant_position": null,
+      "recall": {
+        "1": 0.0,
+        "3": 0.0,
+        "5": 0.0,
+        "10": 0.0
+      },
+      "reciprocal_rank": 0.0
+    },
+    {
+      "id": "q005",
+      "type": "conceptual",
+      "question": "How does RAGAS calculate the faithfulness score?",
+      "relevant_chunk_ids": [
+        "2309.15217.pdf::0013",
+        "2309.15217.pdf::0014",
+        "2309.15217.pdf::0015"
+      ],
+      "retrieved_chunk_ids": [
+        "2309.15217.pdf::0023",
+        "2310.11511.pdf::0120",
+        "2309.15217.pdf::0026",
+        "2005.11401.pdf::0042",
+        "2005.11401.pdf::0045",
+        "2310.11511.pdf::0018",
+        "2309.15217.pdf::0024",
+        "2005.11401.pdf::0031",
+        "2309.15217.pdf::0015",
+        "2310.11511.pdf::0062"
+      ],
+      "first_relevant_position": 9,
+      "recall": {
+        "1": 0.0,
+        "3": 0.0,
+        "5": 0.0,
+        "10": 1.0
+      },
+      "reciprocal_rank": 0.1111111111111111
+    },
+    {
+      "id": "q006",
+      "type": "factual",
+      "question": "Which three quality aspects does RAGAS measure?",
+      "relevant_chunk_ids": [
+        "2309.15217.pdf::0011",
+        "2309.15217.pdf::0012"
+      ],
+      "retrieved_chunk_ids": [
+        "2309.15217.pdf::0026",
+        "2005.11401.pdf::0042",
+        "2309.15217.pdf::0025",
+        "2005.11401.pdf::0041",
+        "2309.15217.pdf::0011",
+        "2309.15217.pdf::0012",
+        "2005.11401.pdf::0045",
+        "2310.11511.pdf::0120",
+        "2005.11401.pdf::0031",
+        "2309.15217.pdf::0023"
+      ],
+      "first_relevant_position": 5,
+      "recall": {
+        "1": 0.0,
+        "3": 0.0,
+        "5": 1.0,
+        "10": 1.0
+      },
+      "reciprocal_rank": 0.2
+    },
+    {
+      "id": "q007",
+      "type": "factual",
+      "question": "How much better is DPR than BM25 in top-5 retrieval accuracy on Natural Questions?",
+      "relevant_chunk_ids": [
+        "2004.04906.pdf::0006"
+      ],
+      "retrieved_chunk_ids": [
+        "2004.04906.pdf::0037",
+        "2004.04906.pdf::0028",
+        "2004.04906.pdf::0035",
+        "2004.04906.pdf::0076",
+        "2004.04906.pdf::0030",
+        "2004.04906.pdf::0038",
+        "2004.04906.pdf::0075",
+        "2004.04906.pdf::0026",
+        "2004.04906.pdf::0074",
+        "2004.04906.pdf::0029"
+      ],
+      "first_relevant_position": null,
+      "recall": {
+        "1": 0.0,
+        "3": 0.0,
+        "5": 0.0,
+        "10": 0.0
+      },
+      "reciprocal_rank": 0.0
+    },
+    {
+      "id": "q008",
+      "type": "conceptual",
+      "question": "Why can dense retrieval find passages that keyword search like BM25 misses?",
+      "relevant_chunk_ids": [
+        "2004.04906.pdf::0003",
+        "2004.04906.pdf::0004"
+      ],
+      "retrieved_chunk_ids": [
+        "2004.04906.pdf::0031",
+        "2004.04906.pdf::0038",
+        "2004.04906.pdf::0011",
+        "2004.04906.pdf::0010",
+        "2005.11401.pdf::0039",
+        "2212.10496.pdf::0023",
+        "2005.11401.pdf::0046",
+        "2212.10496.pdf::0039",
+        "2004.04906.pdf::0074",
+        "2004.04906.pdf::0028"
+      ],
+      "first_relevant_position": null,
+      "recall": {
+        "1": 0.0,
+        "3": 0.0,
+        "5": 0.0,
+        "10": 0.0
+      },
+      "reciprocal_rank": 0.0
+    },
+    {
+      "id": "q009",
+      "type": "exact_term",
+      "question": "What is HyDE and how does it retrieve documents?",
+      "relevant_chunk_ids": [
+        "2212.10496.pdf::0000",
+        "2212.10496.pdf::0001"
+      ],
+      "retrieved_chunk_ids": [
+        "2212.10496.pdf::0020",
+        "2212.10496.pdf::0038",
+        "2212.10496.pdf::0036",
+        "2212.10496.pdf::0029",
+        "2212.10496.pdf::0035",
+        "2212.10496.pdf::0022",
+        "2212.10496.pdf::0015",
+        "2212.10496.pdf::0028",
+        "2212.10496.pdf::0030",
+        "2212.10496.pdf::0008"
+      ],
+      "first_relevant_position": null,
+      "recall": {
+        "1": 0.0,
+        "3": 0.0,
+        "5": 0.0,
+        "10": 0.0
+      },
+      "reciprocal_rank": 0.0
+    },
+    {
+      "id": "q010",
+      "type": "multi_chunk",
+      "question": "What two kinds of memory does the RAG model combine, and what is used for each?",
+      "relevant_chunk_ids": [
+        "2005.11401.pdf::0001",
+        "2005.11401.pdf::0005",
+        "2005.11401.pdf::0006"
+      ],
+      "retrieved_chunk_ids": [
+        "2005.11401.pdf::0051",
+        "2005.11401.pdf::0042",
+        "2005.11401.pdf::0045",
+        "2310.11511.pdf::0123",
+        "2310.11511.pdf::0124",
+        "2005.11401.pdf::0054",
+        "2005.11401.pdf::0002",
+        "2005.11401.pdf::0098",
+        "2310.11511.pdf::0053",
+        "2005.11401.pdf::0012"
+      ],
+      "first_relevant_position": null,
+      "recall": {
+        "1": 0.0,
+        "3": 0.0,
+        "5": 0.0,
+        "10": 0.0
+      },
+      "reciprocal_rank": 0.0
+    }
+  ]
+}
