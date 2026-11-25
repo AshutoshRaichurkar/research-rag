@@ -34,3 +34,6 @@ load:  ## embed every chunk and store it in Postgres
 
 ask:  ## ask a question: make ask Q="your question"
 	.venv/bin/python -m research_rag.rag "$(Q)"
+
+eval-retrieval:
+	.venv/bin/python -m research_rag.evals.retrieval_eval

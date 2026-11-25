@@ -22,6 +22,7 @@ dev = [
     "pytest>=8.0",
     "ruff>=0.17,<0.18",  # pinned so local and CI format code the same way
     "ipykernel>=6.29",
+    "matplotlib>=3.8",  # notebook plots
 ]
 
 [build-system]

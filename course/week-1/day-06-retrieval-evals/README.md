@@ -86,3 +86,35 @@ flowchart LR
 ## Done when
 
 You can say: "Baseline recall@5 is X and MRR is Y, and the main failure pattern is Z."
+
+## As built (what we actually did)
+
+```
+golden.jsonl (10 answerable) ─► search(q, k=10) ─► compare with relevant_chunk_ids
+        ─► recall@1/3/5/10 + MRR ─► evals/results/2026-11-25_retrieval.json (config + per question)
+```
+
+| Plan | What we did | Why |
+| --- | --- | --- |
+| Compare content hashes | Compare chunk IDs | Labels use chunk IDs (Day 5) |
+| Eval results committed | Removed `evals/results/` from `.gitignore` | So git history shows the scores over time |
+| Recall@1/3/5/10 | Plus a recall@k curve for every k from 1 to 10, from the saved top-10 IDs | See exactly where the curve flattens |
+| Look at the worst questions | Found that **half of the first-run misses were labelling misses**, fixed them with `find_chunks`, re-ran | Always audit misses before trusting a score |
+
+"Recall@k" here means a hit if **any** labelled chunk is in the top k (sometimes called hit rate).
+
+**Results (vector search, MiniLM, 200/40 chunks):**
+
+| | First run (bad labels) | Baseline (labels fixed) |
+| --- | --- | --- |
+| recall@1 | 0.00 | 0.30 |
+| recall@3 | 0.10 | 0.50 |
+| recall@5 | 0.20 | **0.50** |
+| recall@10 | 0.40 | 0.60 |
+| MRR | 0.08 | **0.39** |
+
+**Failure pattern:** junk chunks (tables, references, formulas) in 5 of 6 misses; acronyms and exact numbers (RAGAS, HyDE, 65.2%) in 3. The right paper is #1 for 9/10 questions.
+
+**k:** recall is flat from k=3 to k=8, so keep k=5; 40% of answers aren't in the top 10, so improve retrieval rather than raising k.
+
+Note: `diagram-1.png` above still says "hashes"; the Mermaid source below it is correct.
