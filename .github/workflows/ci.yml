@@ -1,0 +1,39 @@
+# Continuous integration: check code style and run the test suite on a fresh Linux machine.
+# Runs on every pull request, and after every merge into develop or main.
+name: CI
+
+on:
+  push:
+    branches: [main, develop]  # after a merge lands on these branches
+  pull_request:                # before merging: every PR, into any branch
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15        # stop a stuck run instead of waiting for hours
+
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"  # same as the local .venv
+          cache: pip               # reuse downloaded packages, so later runs are faster
+
+      - name: Install CPU-only PyTorch (much smaller than the default GPU build)
+        run: pip install torch --index-url https://download.pytorch.org/whl/cpu
+
+      - name: Install the project and dev tools
+        run: pip install -e ".[dev]"
+
+      - name: Lint (ruff check)
+        run: ruff check .
+
+      - name: Check formatting (ruff format)
+        run: ruff format --check .
+
+      # Postgres and Ollama aren't available here, so the database tests skip themselves.
+      - name: Run tests
+        run: pytest -q
