@@ -14,7 +14,9 @@ class LLMError(RuntimeError):
     """Raised when the LLM can't produce an answer."""
 
 
-def generate(prompt: str, temperature: float = 0, retries: int = 1) -> str:
+def generate(
+    prompt: str, temperature: float = 0, retries: int = 1, json_format: bool = False
+) -> str:
     """Send a prompt to Ollama and return the answer text. Retries on network errors."""
     settings = get_settings()
     url = f"{settings.ollama_base_url}/api/generate"
@@ -24,6 +26,8 @@ def generate(prompt: str, temperature: float = 0, retries: int = 1) -> str:
         "stream": False,
         "options": {"temperature": temperature, "num_ctx": CONTEXT_WINDOW},
     }
+    if json_format:
+        body["format"] = "json"  # Ollama guarantees the reply parses as JSON
 
     for attempt in range(retries + 1):
         try:
