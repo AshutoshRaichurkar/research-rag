@@ -37,3 +37,6 @@ ask:  ## ask a question: make ask Q="your question"
 
 eval-retrieval:
 	.venv/bin/python -m research_rag.evals.retrieval_eval
+
+eval-generation:
+	.venv/bin/python -m research_rag.evals.generation_eval
